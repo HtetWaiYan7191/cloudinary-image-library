@@ -3,11 +3,9 @@ import UploadBtn from "@/components/Utils/UploadBtn";
 import cloudinary from "cloudinary";
 import ImageCard from "@/components/Gallery/ImageCard";
 import ForceRefresh from "@/components/Utils/ForceRefresh";
+import { SearchResult } from "../gallery/page";
+import FavoriteList from "@/components/Favorite/FavoriteList";
 
- export interface SearchResult {
-  public_id: string;
-  tags: string[];
-}
 
 const Favorite = async () => {
   const results = (await cloudinary.v2.search
@@ -26,20 +24,7 @@ const Favorite = async () => {
         <UploadBtn />
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mt-12">
-        {results.resources.map((result) => (
-          <ImageCard
-            path="/favorite"
-            key={result.public_id}
-            imageData={result}
-            width="400"
-            height="300"
-            crop="fill"
-            sizes="100vw"
-            alt=" a photo of something"
-          />
-        ))}
-      </div>
+      <FavoriteList initialResources={results.resources} />
     </section>
   );
 };
