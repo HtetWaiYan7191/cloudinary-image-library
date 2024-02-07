@@ -9,9 +9,9 @@ import ForceRefresh from "@/components/Utils/ForceRefresh";
   tags: string[];
 }
 
-const Gallery = async () => {
+const Favorite = async () => {
   const results = (await cloudinary.v2.search
-    .expression("resource_type:image")
+    .expression("resource_type:image AND tags=favorite")
     .sort_by("created_at", "desc")
     .max_results(30)
     .with_field("tags")
@@ -19,16 +19,17 @@ const Gallery = async () => {
 
   return (
     <section className=" w-full pt-12 px-6">
-      <ForceRefresh/>
+        <ForceRefresh/>
+
       <div className="flex justify-between">
-        <h1 className="text-4xl font-bold">Gallery</h1>
+        <h1 className="text-4xl font-bold">Favorite</h1>
         <UploadBtn />
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mt-12">
         {results.resources.map((result) => (
           <ImageCard
-            path="/gallery"
+            path="/favorite"
             key={result.public_id}
             imageData={result}
             width="400"
@@ -43,4 +44,4 @@ const Gallery = async () => {
   );
 };
 
-export default Gallery;
+export default Favorite;
