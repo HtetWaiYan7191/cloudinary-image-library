@@ -8,6 +8,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { FolderPlus } from "@/app/icons/FolderPlus";
+import { AddToAlbumDialog } from "./AddToAlbumDialog";
 
 export function MenuBar() {
   return (
@@ -19,9 +20,8 @@ export function MenuBar() {
       </DropdownMenuTrigger>
       <DropdownMenuContent className=" w-40  p-0">
         <DropdownMenuGroup>
-          <DropdownMenuItem className="p-2">
-            <FolderPlus className="mr-2 h-6 w-6" />
-            <span>Add To Album</span>
+          <DropdownMenuItem className="p-2" asChild>
+            <AddToAlbumDialog/>
           </DropdownMenuItem>
         </DropdownMenuGroup>
       </DropdownMenuContent>
