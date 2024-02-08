@@ -3,8 +3,10 @@ import UploadBtn from "@/components/Utils/UploadBtn";
 import cloudinary from "cloudinary";
 import ImageCard from "@/components/Gallery/ImageCard";
 import ForceRefresh from "@/components/Utils/ForceRefresh";
+import ImageGrid from "@/components/Utils/ImageGrid";
+import GalleryGrid from "@/components/Gallery/GalleryGrid";
 
- export interface SearchResult {
+export interface SearchResult {
   public_id: string;
   tags: string[];
 }
@@ -19,26 +21,12 @@ const Gallery = async () => {
 
   return (
     <section className=" w-full pt-12 px-6">
-      <ForceRefresh/>
+      <ForceRefresh />
       <div className="flex justify-between">
         <h1 className="text-4xl font-bold">Gallery</h1>
         <UploadBtn />
       </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mt-12">
-        {results.resources.map((result) => (
-          <ImageCard
-            path="/gallery"
-            key={result.public_id}
-            imageData={result}
-            width="400"
-            height="300"
-            crop="fill"
-            sizes="100vw"
-            alt=" a photo of something"
-          />
-        ))}
-      </div>
+      <GalleryGrid images={results.resources}/>
     </section>
   );
 };
