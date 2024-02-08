@@ -17,16 +17,22 @@ import { useState } from "react";
 import { CreateFolder } from "@/index";
 
 
-export function AddToAlbumDialog({image} : {image: SearchResult}) {
+export function AddToAlbumDialog({image, onClose} : {image: SearchResult, onClose: () => void}) {
     const [album, setAlbum] = useState('');
     const [open, setOpen] = useState(false);
     const handleSubmit = async () => {
+        onClose()
         setOpen(false);
         await CreateFolder(album, image);
     }
 
   return (
-    <Dialog open={open} onOpenChange={setOpen}>
+    <Dialog open={open} onOpenChange={(newOpenState) => {
+      setOpen(newOpenState)
+      if(!newOpenState) {
+        onClose();
+      }
+    }}>
       <DialogTrigger asChild>
         <Button variant="outline" asChild>
           <div>

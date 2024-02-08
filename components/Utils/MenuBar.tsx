@@ -1,3 +1,4 @@
+'use client'
 import Menu from "@/app/icons/Menu";
 import { Button } from "@/components/ui/button";
 import {
@@ -9,10 +10,12 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { AddToAlbumDialog } from "./AddToAlbumDialog";
 import { SearchResult } from "@/app/gallery/page";
+import { useState } from "react";
 
 export function MenuBar({image} : {image: SearchResult}) {
+  const [open, setOpen] = useState(false);
   return (
-    <DropdownMenu>
+    <DropdownMenu open={open} onOpenChange={setOpen}>
       <DropdownMenuTrigger asChild>
         <Button variant="secondary" className="p-0 w-8 h-8">
           <Menu/>
@@ -21,7 +24,7 @@ export function MenuBar({image} : {image: SearchResult}) {
       <DropdownMenuContent className=" w-40  p-0">
         <DropdownMenuGroup>
           <DropdownMenuItem className="p-2" asChild>
-            <AddToAlbumDialog image={image}/>
+            <AddToAlbumDialog image={image} onClose={() => setOpen(false)}/>
           </DropdownMenuItem>
         </DropdownMenuGroup>
       </DropdownMenuContent>

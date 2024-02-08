@@ -2,6 +2,7 @@ import { cn } from "@/lib/utils";
 import { Button } from "../ui/button";
 import Heart from "@/app/icons/Heart";
 import Link from "next/link";
+import { Album } from "@/app/icons/Album";
 export function SideNav() {
   return (
     <div className="pb-12 w-1/4">
@@ -11,11 +12,7 @@ export function SideNav() {
             Manage
           </h2>
           <div className="space-y-1">
-            <Button
-              asChild
-              variant="ghost"
-              className="w-full justify-start"
-            >
+            <Button asChild variant="ghost" className="w-full justify-start">
               <Link href="/gallery">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -34,22 +31,12 @@ export function SideNav() {
                 Gallery
               </Link>
             </Button>
-            <Button variant="ghost" className="w-full justify-start">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-                className="w-6 h-6 mr-3"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M3.75 9.776c.112-.017.227-.026.344-.026h15.812c.117 0 .232.009.344.026m-16.5 0a2.25 2.25 0 0 0-1.883 2.542l.857 6a2.25 2.25 0 0 0 2.227 1.932H19.05a2.25 2.25 0 0 0 2.227-1.932l.857-6a2.25 2.25 0 0 0-1.883-2.542m-16.5 0V6A2.25 2.25 0 0 1 6 3.75h3.879a1.5 1.5 0 0 1 1.06.44l2.122 2.12a1.5 1.5 0 0 0 1.06.44H18A2.25 2.25 0 0 1 20.25 9v.776"
-                />
-              </svg>
-              Albums
+
+            <Button variant="ghost" asChild className="w-full justify-start">
+              <Link href="/album">
+                <Album />
+                Albums
+              </Link>
             </Button>
             <Button
               variant="ghost"
