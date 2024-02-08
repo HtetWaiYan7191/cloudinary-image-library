@@ -7,21 +7,21 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { FolderPlus } from "@/app/icons/FolderPlus";
 import { AddToAlbumDialog } from "./AddToAlbumDialog";
+import { SearchResult } from "@/app/gallery/page";
 
-export function MenuBar() {
+export function MenuBar({image} : {image: SearchResult}) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="secondary" className="p-0 w-8 h-8">
-          <Menu />
+          <Menu/>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className=" w-40  p-0">
         <DropdownMenuGroup>
           <DropdownMenuItem className="p-2" asChild>
-            <AddToAlbumDialog/>
+            <AddToAlbumDialog image={image}/>
           </DropdownMenuItem>
         </DropdownMenuGroup>
       </DropdownMenuContent>

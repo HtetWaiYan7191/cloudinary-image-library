@@ -32,7 +32,7 @@ const ImageCard = (props : any & {imageData: SearchResult, onUnHeart?: ((unHeart
         }}/>
         )}
         <div className='menu-bar-container top-3 right-3 absolute'>
-        <MenuBar />
+        <MenuBar image={imageData} />
         </div>
         
     </div>
