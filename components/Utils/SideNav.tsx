@@ -3,7 +3,9 @@ import { Button } from "../ui/button";
 import Heart from "@/app/icons/Heart";
 import Link from "next/link";
 import { Album } from "@/app/icons/Album";
-export function SideNav() {
+import { AccordionAlbums } from "./AccordionAlbums";
+import { FolderAlbumProps } from "@/app/album/page";
+export function SideNav({folders} : {folders: FolderAlbumProps}) {
   return (
     <div className="pb-12 w-1/4">
       <div className="space-y-4 py-4">
@@ -33,10 +35,11 @@ export function SideNav() {
             </Button>
 
             <Button variant="ghost" asChild className="w-full justify-start">
-              <Link href="/album">
+              {/* <Link href="/album">
                 <Album />
                 Albums
-              </Link>
+              </Link> */}
+              <AccordionAlbums folders={folders}/>
             </Button>
             <Button
               variant="ghost"
