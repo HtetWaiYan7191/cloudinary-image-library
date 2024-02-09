@@ -1,4 +1,4 @@
-'use server'// Add 'use server' to specify using the server
+'use server'// Add 'use server' so that getImage function can be used . 
 import { SearchResult } from "@/app/gallery/page";
 import React, { ReactNode } from "react";
 
